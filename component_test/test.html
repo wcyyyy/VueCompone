@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="demo">
+      <button-counter></button-counter>
+  </hr>
+    <blog-post
+      v-for="post in posts"
+      :key='post.id'
+      :title='post.title'
+    />
+  </div>
+  
+  <script type="text/javascript" src='./js/vue.js'></script>
+  <script type="text/javascript">
+
+    Vue.component('blog-post',{
+      props:['title'],
+      template:'<h3>{{title}}<button-counter/></h3>'
+
+    })
+    Vue.component('button-counter',{
+      data() {
+        return {
+          count:0
+        }
+      },
+      template:'<button @click="count++">你点击了{{count}}次</button>'
+    })
+    new Vue({
+      el:'#demo',
+      data: {
+        posts: [
+          { id: 1, title: '我的 Vue 旅程222' },
+          { id: 2, title: '用 Vue 写博客222' },
+          { id: 3, title: 'Vue 如此有趣222' }
+        ]
+      }
+    })
+  </script>
+  
+</body>
+</html>
